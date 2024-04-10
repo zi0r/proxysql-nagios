@@ -256,7 +256,7 @@ def prules_check(pconn, nagioslogger, args):
     doutput_values = pcursor.fetchall()
     pconn.close()
 
-    if hashlib.md5(str(routput_values)).hexdigest() == hashlib.md5(str(doutput_values)).hexdigest():
+    if hashlib.md5(str(routput_values).encode()).hexdigest() == hashlib.md5(str(doutput_values).encode()).hexdigest():
         nagioslogger.info('ProxySQL Query Rules: DISK / RUNTIME config matches')
         sys.exit(OK)
     else:
